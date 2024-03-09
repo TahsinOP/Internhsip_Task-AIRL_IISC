@@ -1,0 +1,4 @@
+<launch>
+ <!-- Start RViz with a specific configuration file -->
+ <node name="rviz" pkg="rviz" type="rviz" args="-d $(find pointnet_ros)/rviz/pointnet_visualization.rviz" output="screen"/>
+</launch>
