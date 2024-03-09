@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+ <!-- Start RViz with a specific configuration file -->
+ <node name="rviz" pkg="rviz" type="rviz" args="-d $(find task_2_pointnet_ros)/rviz/pointnet_visualization.rviz" output="screen"/>
+</launch>
