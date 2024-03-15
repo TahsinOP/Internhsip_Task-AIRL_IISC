@@ -40,8 +40,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <!-- xacro args -->
     <xacro:arg name="robot_namespace" default="/" />
     <xacro:arg name="tf_pre"  default= ""/>
-    <xacro:arg name="lidar_enabled" default="false"/>
-    <xacro:arg name="rplidar_a3_enabled" default="false"/>
+    <xacro:arg name="lidar_enabled" default="true"/>
+    <xacro:arg name="rplidar_a3_enabled" default="true"/>
     <xacro:arg name="hokuyo_ust_10lx_enabled" default="false"/>
     <xacro:arg name="imu_enabled" default="true"/>
     <xacro:arg name="camera_enabled" default="false"/>
@@ -121,10 +121,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </xacro:if>
 
         <!-- LIDAR -->
-        <!--xacro:if value="$(arg lidar_enabled)">
+        <xacro:if value="$(arg lidar_enabled)">
             <xacro:include filename="$(find volta_description)/urdf/accessories/lidar_volta.urdf.xacro"/>
-            <xacro:lidar rplidar_a3_enabled="$(arg rplidar_a3_enabled)" hokuyo_ust_10lx_enabled="$(arg hokuyo_ust_10lx_enabled)" robot_namespace="$(arg robot_namespace)">  </xacro:lidar>
-        </xacro:if-->
+            <xacro:lidar rplidar_a3_enabled="$(arg rplidar_a3_enabled)" hokuyo_ust_10lx_enabled="$(arg hokuyo_ust_10lx_enabled)" robot_namespace="$(arg robot_namespace)" ></xacro:lidar>
+        </xacro:if>
 
         <!--Camera -->
         <!--xacro:if value="$(arg camera_enabled)">
@@ -139,6 +139,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
             </plugin>
         </gazebo>
+        
+        <gazebo>
+         <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+            <publish_tf>1</publish_tf>
+	    <alwaysOn>true</alwaysOn>
+	    <updateRate>20</updateRate>
+	    <leftJoint>right_wheel_joint</leftJoint>
+    	    <rightJoint>left_wheel_joint</rightJoint>
+	    <wheelSeparation>0.3208</wheelSeparation>
+	    <wheelDiameter>0.085</wheelDiameter>
+	    <commandTopic>cmd_vel</commandTopic>
+	    <odometryTopic>odom</odometryTopic>
+	    <odometryFrame>odom</odometryFrame>
+	    <robotBaseFrame>base_link</robotBaseFrame>
+	    <publish_odom>true</publish_odom>
+            <publish_odom_tf>true</publish_odom_tf>
+            <publish_wheel_tf>true</publish_wheel_tf>
+	    <publishWheelJointState>true</publishWheelJointState>
+	    <legacyMode>true</legacyMode>
+	  </plugin>
+	</gazebo>
+
 
     </xacro:macro>
 

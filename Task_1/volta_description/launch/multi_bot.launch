@@ -2,8 +2,6 @@
 <launch>
     <arg name="model" default="$(find volta_description)/urdf/volta.xacro"/>
     
-    <arg name="viz_config" default="$(find volta_description)/rviz_params/urdf.rviz"/>
-    
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>  
      
   <group ns="robot1">
@@ -11,7 +9,9 @@
     <include file="$(find volta_description)/launch/single_bot.launch" >
       <arg name="index"  value="1" />
       <arg name="init_pose" value="-x 0 -y 0 -z 0" />
-      <arg name="robot_name"  value="Robot1" />    
+      <arg name="robot_name"  value="Robot1" /> 
+      <arg name="robot_namespace" value="/robot1"/>
+      <arg name="tf_pre" value="robot1_tf"/>   
       
     </include>
   </group>
@@ -22,6 +22,8 @@
       <arg name="index"  value="2" />
       <arg name="init_pose" value="-x 1 -y 0 -z 0" />
       <arg name="robot_name"  value="Robot2" />
+      <arg name="robot_namespace" value="/robot2"/>
+      <arg name="tf_pre" value="robot2_tf"/>  
     </include>
   </group>
 
@@ -31,6 +33,8 @@
       <arg name="index"  value="3" />
       <arg name="init_pose" value="-x 0 -y 1 -z 0" />
       <arg name="robot_name"  value="Robot3" />
+      <arg name="robot_namespace" value="/robot3"/>
+      <arg name="tf_pre" value="robot3_tf"/>  
     </include>
   </group>
 
@@ -40,6 +44,8 @@
       <arg name="index"  value="4" />
       <arg name="init_pose" value="-x -1 -y 0 -z 0" />
       <arg name="robot_name"  value="Robot4" />
+      <arg name="robot_namespace" value="/robot4"/>
+      <arg name="tf_pre" value="robot4_tf"/>  
     </include>
   </group>
 
@@ -49,9 +55,12 @@
       <arg name="index"  value="5" />
       <arg name="init_pose" value="-x 0 -y -1 -z 0" />
       <arg name="robot_name"  value="Robot5" />
+      <arg name="robot_namespace" value="/robot5"/>
+      <arg name="tf_pre" value="robot5_tf"/>  
     </include>
   </group>  
 
-    <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(arg viz_config)" respawn="true" /-->
+    
+    
 </launch>
 

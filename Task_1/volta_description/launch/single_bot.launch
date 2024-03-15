@@ -2,13 +2,15 @@
 <launch>
     <arg name="robot_name"/>
     <arg name="init_pose"/>
-    <arg name = "index"/>
-    
+    <arg name = "index"/> 
+    <arg name="robot_namespace"/>
+    <arg name="tf_pre"/>  
+
     <node name="spawn_volta_$(arg index)" pkg="gazebo_ros" type="spawn_model"
-     args="$(arg init_pose) -urdf -param /robot_description -model $(arg robot_name)"
+     args="$(arg init_pose) -urdf -param /robot_description -model $(arg robot_name) "
      respawn="false" output="screen" />
      
-     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"  output="screen" />
 
     
 </launch>

@@ -82,8 +82,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <xacro:property name="caster_joint_z" value="-0.0008"/>
 
     <!-- base of lidar mopunt, x position in lidar_volta.urdf.xacro -->
-    <!--xacro:property name="lidar_joint_y" value="0.0"/>
-    <xacro:property name="lidar_joint_z" value="0.1140"/-->
+    <xacro:property name="lidar_joint_y" value="0.0"/>
+    <xacro:property name="lidar_joint_z" value="0.1140"/>
 
     <!-- base of camera mount -->
     <!--xacro:property name="camera_joint_x" value="0.2285"/>
