@@ -1,6 +1,4 @@
-# Task 1 - Multi-Robot Simulation : 
-
-[GitHub Link for Task 1](Link) 
+# Task 1 - Multi-Robot Simulation 
 
 ## Part (A): Optimize the URDF and Simulator
 
@@ -25,8 +23,6 @@ The next task is to set up navigation stacks for all the robots, using the same 
 So I was able to successfully load the robots into the gazebo with their sensor, cmd_vel, and Odom topics. But when I would publish commands on the topics the bot wouldn't move, I tried a lot but couldn't do anything. For the time being, I wrote a simple Artificial Potential Field algorithm for moving bots from high potential to low potential, using the attraction and repulsion model.
 
 # Task 2 - 3D Object Detection:
-
-[GitHub Link for Task - 2](Link)
 
 ## Part (A): Converting dataset to .bag files
 
