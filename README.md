@@ -1,10 +1,14 @@
-# Part (A): Optimize the URDF and Simulator
+# Task 1 - Multi-Robot Simulation : 
+
+[GitHub Link for Task 1](Link) 
+
+## Part (A): Optimize the URDF and Simulator
 
 For this part, I simply removed the camera (all related joints, links, and plugins) from the URDF file of the Voltas robot to reduce the computational effort on Gazebo. I also removed some unnecessary visual tags for easy and smooth simulation.
 
 Also added the Differential drive plugin to the URDF to get access to the motion for the robots, and changed the URDF to load the lidar, imu, and diff_drive plugin for all robots with unique remapped topics with their namespaces.
 
-# Part (B): Setting up the multi-robot simulation
+## Part (B): Setting up the multi-robot simulation
 
 This was a pretty challenging task, so this is the solution I came up with - created three separate launch files:
 
@@ -16,7 +20,7 @@ This was a pretty challenging task, so this is the solution I came up with - cre
 
 The next task is to set up navigation stacks for all the robots, using the same concepts of remapping the required topics to their respective namespaces. Created launch files for navigation to control all the robots with each having their nav stack (amcl_launch, move_base_launch files for all the bots and a main nav_launch file).
 
-# Part (C): Writing the Controller
+## Part (C): Writing the Controller
 
 So I was able to successfully load the robots into the gazebo with their sensor, cmd_vel, and Odom topics. But when I would publish commands on the topics the bot wouldn't move, I tried a lot but couldn't do anything. For the time being, I wrote a simple Artificial Potential Field algorithm for moving bots from high potential to low potential, using the attraction and repulsion model.
 
